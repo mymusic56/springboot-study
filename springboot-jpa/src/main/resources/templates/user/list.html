@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>测试 user</h3>
+
+<form th:action="@{/user/add}" method="post">
+    <input name="name" placeholder="姓名"/>
+    <input name="email" placeholder="邮箱"/>
+    <input type="submit" value="提交">
+</form>
+
+<table border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created</th>
+        <th>时间</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user,iterStat : ${userList}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.getCreated_at()}">-</td>
+            <!--<td th:value="${#dates.format(user.created_at, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
+            <!--<td th:value="${#dates.format(user.getCreatedDate(user.created_at*1000))}"></td>-->
+            <!--<td th:text="${#calendars.format(user.getCreated_at())}"></td>-->
+            <td th:text="${#calendars.format(user.created_at*1000, 'yyyy-MM-dd HH:mm:ss')}">-</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

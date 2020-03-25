@@ -1,0 +1,2 @@
+INSERT INTO BAR (ID, BAR) VALUES (1, 'bar-aaa');
+INSERT INTO BAR (ID, BAR) VALUES (2, 'bar-bbb');
