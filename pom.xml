@@ -22,6 +22,7 @@
         <module>springboot-common</module>
         <module>test-mybatis</module>
         <module>test-mybatis-multi</module>
+        <module>test-jpa-thymeleaf</module>
     </modules>
 
     <properties>
