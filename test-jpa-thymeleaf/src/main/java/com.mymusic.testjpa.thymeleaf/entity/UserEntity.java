@@ -26,7 +26,7 @@ public class UserEntity {
 
 
     public Date getCreatedDate (int created_at){
-        return new Date(created_at);
+        return new Date(((long)created_at)*1000);
     }
 
     public String toString() {

@@ -43,4 +43,43 @@ public class UserController {
         }
         return new ModelAndView("user/list", "users", users);
     }
+
+    @GetMapping("/delete")
+    public String delete(Model model, @RequestParam long id){
+        userRepository.deleteByUserId(id);
+        model.addAttribute("users", userRepository.findAll());
+        return "/user/list";
+    }
+
+    @PostMapping("/add")
+    public String add(Model model, @RequestParam Map<String, String> params){
+        UserEntity u = new UserEntity();
+        u.setName(params.get("name"));
+        u.setEmail(params.get("email"));
+        u.setCreated_at(DateUtil.getTimestamp());
+        userRepository.save(u);
+
+        model.addAttribute("users", userRepository.findAll());
+        return "/user/list";
+    }
+
+    @GetMapping("edit")
+    public ModelAndView edit(@RequestParam long id) {
+        UserEntity u = userRepository.getById(id);
+        return new ModelAndView("user/edit", "user", u);
+    }
+
+
+    @PostMapping("save")
+    public ModelAndView save(@RequestParam Map<String,String> param) {
+        UserEntity u = userRepository.getById(Long.valueOf(param.get("id")));
+        if (u != null) {
+            u.setName(param.get("name"));
+            u.setEmail(param.get("email"));
+            userRepository.save(u);
+        }
+
+        List<UserEntity> users = userRepository.findAll();
+        return new ModelAndView("user/list", "users", users);
+    }
 }
