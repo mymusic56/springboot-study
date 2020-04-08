@@ -1,5 +1,6 @@
 package com.mymusic.testjpa.thymeleaf.controller;
 
+import com.mymusic.testjpa.thymeleaf.annotation.CommonCheck1;
 import com.mymusic.testjpa.thymeleaf.entity.UserEntity;
 import com.mymusic.testjpa.thymeleaf.management.UserManagement;
 import com.mymusic.testjpa.thymeleaf.repository.UserRepository;
@@ -35,6 +36,7 @@ public class UserController {
     }
 
     @GetMapping("list2")
+    @CommonCheck1
     public ModelAndView list2() {
         // This returns a JSON or XML with the users
         List<UserEntity> users = userRepository.findAll();
