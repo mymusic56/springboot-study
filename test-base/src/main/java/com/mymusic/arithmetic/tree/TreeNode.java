@@ -1,5 +1,7 @@
 package com.mymusic.arithmetic.tree;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -136,7 +138,7 @@ class SearchTree {
      * @param parent
      * @return
      */
-    public Word _search(String word, int index, TreeNode parent) {
+    private Word _search(String word, int index, TreeNode parent) {
         if (index == word.length()) {
             return new Word();
         }
@@ -158,25 +160,45 @@ class SearchTree {
 
     /**
      * 使用栈进行搜索
+     * @param word
+     * @return
+     */
+    public Word searchWithStask(String word) {
+        return _searchWithStack(word, 0, this.root);
+    }
+
+    /**
+     * 使用栈进行搜索
      *
      * @param word
      * @param index
      * @param root
      * @return
      */
-    public Word _searchWithStack(String word, int index, TreeNode root) {
-
-        // 使用栈来实现深度优先搜索
-
-
+    private Word _searchWithStack(String word, int index, TreeNode root) {
         Word w = new Word();
+        // 使用栈来实现深度优先搜索
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            if (node.sons.size() == 0) {
+                return w;
+            }
+            if (!node.sons.containsKey(word.charAt(index))) {
+                return w;
+            }
+            TreeNode found = node.sons.get(word.charAt(index));
+            //找到单词
+            if (found.isWord && index == word.length() - 1) {
+                w.explanation = found.explanation;
+                w.word = word;
+                break;
+            }
+            stack.push(found);
+            index++;
+        }
         return w;
-    }
-
-    private TreeNode searchNode(Character w) {
-        //使用栈进行搜索
-
-        return this.root;
     }
 }
 
@@ -195,5 +217,7 @@ class Test {
         System.out.println("搜索system：" + w.word + ", 解释：" + w.explanation);
         w = tree.search("Fram1e");
         System.out.println("搜索Fram1e：" + w.word + ", 解释：" + w.explanation);
+        w = tree.searchWithStask("system");
+        System.out.println("搜索system：" + w.word + ", 解释：" + w.explanation);
     }
 }
