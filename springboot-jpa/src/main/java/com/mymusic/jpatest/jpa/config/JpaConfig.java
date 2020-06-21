@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.mymusic.jpa.repository"})
-@EntityScan(basePackages = {"com.mymusic.jpa.entity"})
+@EntityScan(basePackages = {"com.com.mymusic.jpa.entity"})
 //@EntityScan(basePackageClasses = {Customer.class, User.class})
 @Slf4j
 public class JpaConfig {

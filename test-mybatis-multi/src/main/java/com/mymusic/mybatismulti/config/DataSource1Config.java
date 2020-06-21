@@ -17,7 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.mymusic.mybatismulti.mapper.test1", sqlSessionTemplateRef = "dataSource1SqlSessionTemplate")
+@MapperScan(basePackages = "com.com.mymusic.mybatismulti.mapper.test1", sqlSessionTemplateRef = "dataSource1SqlSessionTemplate")
 public class DataSource1Config {
 
     @Bean(name = "dataSource1")

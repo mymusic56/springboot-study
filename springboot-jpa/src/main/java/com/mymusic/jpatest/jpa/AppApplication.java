@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 })
 //@ComponentScan("com")
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = {"com.mymusic.jpa.repository"})
-//@EntityScan(basePackages = {"com.mymusic.jpa.entity"})
+//@EnableJpaRepositories(basePackages = {"com.com.mymusic.jpa.repository"})
+//@EntityScan(basePackages = {"com.com.mymusic.jpa.entity"})
 @Slf4j
 public class AppApplication {
 	public static void main(String[] args) {
