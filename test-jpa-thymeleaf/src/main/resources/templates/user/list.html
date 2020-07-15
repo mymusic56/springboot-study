@@ -14,6 +14,7 @@
             <th>User Name</th>
             <th>Email</th>
             <th>CreatedAt</th>
+            <th>UpdatedAt</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -24,6 +25,7 @@
             <td th:text="${user.name}">neo</td>
             <td th:text="${user.email}">neo</td>
             <td th:text="${#dates.format(user.getCreatedDate(user.getCreated_at()), 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td th:text="${#dates.format(user.getCreatedDate(user.getUpdated_at()), 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td><a th:href="@{edit(id=${user.id})}">edit</a></td>
             <td><a th:href="@{/user/delete(id=${user.id})}">delete</a></td>
         </tr>

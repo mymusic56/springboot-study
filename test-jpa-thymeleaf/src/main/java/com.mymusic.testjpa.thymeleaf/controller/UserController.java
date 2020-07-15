@@ -1,10 +1,10 @@
 package com.mymusic.testjpa.thymeleaf.controller;
 
+import com.mymusic.jpatest.common.util.DateUtil;
 import com.mymusic.testjpa.thymeleaf.annotation.CommonCheck1;
 import com.mymusic.testjpa.thymeleaf.entity.UserEntity;
 import com.mymusic.testjpa.thymeleaf.management.UserManagement;
 import com.mymusic.testjpa.thymeleaf.repository.UserRepository;
-import com.mymusic.testjpa.thymeleaf.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,6 +78,7 @@ public class UserController {
         if (u != null) {
             u.setName(param.get("name"));
             u.setEmail(param.get("email"));
+            u.setUpdated_at(DateUtil.getTimestamp());
             userRepository.save(u);
         }
 

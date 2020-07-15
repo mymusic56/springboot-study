@@ -1,9 +1,9 @@
 package com.mymusic.testmybatis.controller;
 
+import com.mymusic.jpatest.common.util.DateUtil;
 import com.mymusic.testmybatis.entity.UserEntity;
 import com.mymusic.testmybatis.enums.UserSexEnum;
 import com.mymusic.testmybatis.mapper.UserMapper;
-import com.mymusic.testmybatis.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
