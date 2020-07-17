@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 public class UserInfo implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer uid;
@@ -29,7 +30,6 @@ public class UserInfo implements Serializable {
      * @return
      */
     public String getCredentialsSalt(){
-        return this.username+this.salt;
+        return this.salt;
     }
-    //重新对盐重新进行了定义，用户名+salt，这样就更加不容易被破解
 }

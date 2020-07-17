@@ -2,10 +2,14 @@ package com.mymusic.testshiro.web;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 @Controller
-@RequestMapping("/userInfo")
+@RequestMapping("/user")
 public class UserInfoController {
 
     /**
@@ -24,7 +28,7 @@ public class UserInfoController {
      */
     @RequestMapping("/userAdd")
     @RequiresPermissions("userInfo:add")//权限管理;
-    public String userInfoAdd(){
+    public String userInfoAdd(@RequestParam Map<String, String> param){
         return "userInfoAdd";
     }
 

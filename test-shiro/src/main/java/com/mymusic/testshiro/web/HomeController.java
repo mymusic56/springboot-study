@@ -1,7 +1,9 @@
 package com.mymusic.testshiro.web;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +23,11 @@ public class HomeController {
         // 登录失败从request中获取shiro处理的异常信息。
         // shiroLoginFailure:就是shiro异常类的全类名.
         String exception = (String) request.getAttribute("shiroLoginFailure");
+        Subject currentUser = SecurityUtils.getSubject();
+        System.out.println("isAuthenticated=" + currentUser.isAuthenticated());
         System.out.println("exception=" + exception);
+        System.out.println("isRemembered=" + currentUser.isRemembered());
+
         String msg = "";
         if (exception != null) {
             if (UnknownAccountException.class.getName().equals(exception)) {

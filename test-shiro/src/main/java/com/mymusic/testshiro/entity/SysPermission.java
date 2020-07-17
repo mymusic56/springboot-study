@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 public class SysPermission implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer id;//主键.
