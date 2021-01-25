@@ -1,0 +1,18 @@
+spring:
+  canal:
+    hostname: home.mytest.com
+    port: 11111
+    destination: test
+    username: canal
+    password: 123456
+    filter: ".*\\..*"
+    batchSize: 100
+    queueName: goods_change
+  redis:
+    host: home.mytest.com
+    password: 123456
+    database: 9
+    jedis:
+      pool:
+        max-active: 1
+        max-idle: 1

@@ -1,4 +1,4 @@
-package com.mymusic.test;
+package com.mymusic.canal.demo;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -15,14 +15,14 @@ import com.alibaba.otter.canal.protocol.CanalEntry.EventType;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 
-public class SimpleCanalClientExample {
+public class SimpleCanalClientTest {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         // 创建链接
         String hostname = AddressUtils.getHostIp();
         hostname = "home.mytest.com";
         CanalConnector connector = CanalConnectors.newSingleConnector(
-                new InetSocketAddress(hostname,11111),
+                new InetSocketAddress(hostname, 11111),
                 "test", "canal", "123456");
         int batchSize = 1000;
         int emptyCount = 0;
@@ -30,7 +30,7 @@ public class SimpleCanalClientExample {
             connector.connect();
             connector.subscribe(".*\\..*");
             connector.rollback();
-            int totalEmptyCount = 120;
+            int totalEmptyCount = 220;
             while (emptyCount < totalEmptyCount) {
                 Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
                 long batchId = message.getId();
@@ -49,7 +49,9 @@ public class SimpleCanalClientExample {
                 }
 
                 connector.ack(batchId); // 提交确认
-                // connector.rollback(batchId); // 处理失败, 回滚数据
+                if (batchId != -1) {
+//                    connector.rollback(batchId); // 处理失败, 回滚数据
+                }
             }
 
             System.out.println("empty too many times, exit");
@@ -60,6 +62,7 @@ public class SimpleCanalClientExample {
 
     private static void printEntry(List<Entry> entrys) {
         for (Entry entry : entrys) {
+            System.out.println("entry.getEntryType() = " + entry.getEntryType());
             if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN || entry.getEntryType() == EntryType.TRANSACTIONEND) {
                 continue;
             }
