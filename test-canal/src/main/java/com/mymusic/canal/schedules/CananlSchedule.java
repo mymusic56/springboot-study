@@ -42,6 +42,7 @@ public class CananlSchedule{
                 printEntry(message.getEntries());
             } catch (Exception e) {
                 log.error("message处理失败：" + e.getMessage());
+                e.printStackTrace();
             }
         }
         connector.ack(batchId); // 提交确认

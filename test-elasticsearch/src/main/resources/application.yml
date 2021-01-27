@@ -1,0 +1,29 @@
+server:
+  port: 18081
+spring:
+  canal:
+    queueName: goods_change
+  redis:
+    host: home.mytest.com
+    password: 123456
+    database: 9
+    jedis:
+      pool:
+        max-active: 5
+        max-idle: 3
+  datasource:
+    url: jdbc:mysql://home.mytest.com:3306/test
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  file:
+    max-history: 20
+    max-size: 1MB
+  path: "D:\\workspace-Java\\springboot-study\\log\\test-testelasticsearch"
+  level:
+    com.mymusic.testelasticsearch.mapper: debug

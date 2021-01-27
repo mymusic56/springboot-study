@@ -18,8 +18,8 @@ public class StsTest {
         String endpoint = "sts.aliyuncs.com";
         String AccessKeyId = "";
         String accessKeySecret = "";
-        String roleArn = "acs:ram::1506251529768765:role/testrole";
-        String roleSessionName = "imgage";
+        String roleArn = "acs:ram::1668826955139968:role/dayouxiansts";
+        String roleSessionName = "image";
         String policy = "{\n" +
                 "    \"Statement\": [\n" +
                 "        {\n" +
