@@ -1,4 +1,5 @@
 .idea
 log
 **/target
-*.iml
+**/*.iml
+test-uploads/src/main/resources/static/uploads

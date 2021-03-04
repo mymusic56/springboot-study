@@ -22,12 +22,15 @@
         <module>springboot-common</module>
         <module>test-mybatis</module>
         <module>test-mybatis-multi</module>
-        <module>test-jpa-thymeleaf</module>
         <module>test-scheduler</module>
         <module>test-shiro</module>
         <module>test-canal</module>
         <module>test-basic</module>
         <module>test-elasticsearch</module>
+        <module>test-uploads</module>
+        <module>test-upload</module>
+        <module>test-jpa-thymeleaf</module>
+        <module>test-thymeleaf-jpa</module>
     </modules>
 
     <properties>
@@ -69,6 +72,10 @@
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 

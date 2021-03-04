@@ -1,0 +1,23 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      max-file-size: 10MB
+      max-request-size: 10MB
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: test
+  customConfig:
+    uploadFile:
+      uploadPath: D:\Workspace-Java\my_project\springboot-study\test-upload\src\main\resources\static\uploads-test\
+
+---
+spring:
+  profiles: dev
+  customConfig:
+    uploadFile:
+      uploadPath: D:\Workspace-Java\my_project\springboot-study\test-upload\src\main\resources\static\uploads-dev\
